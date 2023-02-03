@@ -1,0 +1,31 @@
+{% extends 'landlord/base.html' %}
+{% block content %}
+
+<h1>Property Details:</h1>
+
+<form action="./details/update" method="post">
+    {% csrf_token %}
+    <!-- Address -->
+    <label id="name" for="address"><i class="fas fa-envelope"></i>Address</label>
+    <input type="text" name="address" id="name_i" value="{{property.address}}" required/>
+    <br>
+
+    <!-- Desciption -->
+    <label id="desc" for="desc"><i class="fas fa-envelope"></i>Description</label>
+    <input type="text" name="desc" id="desc" value="{{property.desc}}" required/>
+    <br>
+
+    <!-- Weekly Price -->
+    <label id="weekly_price" for="weekly_price"><i class="fas fa-envelope"></i>Weekly Price</label>
+    <input type="text" name="weekly_price" id="weekly_price_i" value="{{property.weekly_price}}" required/>
+    <br>
+
+    <!-- Etc continue here -->
+    <!-- Needs front end validation here-->
+    
+    <div class="btn-block">
+      <button type="submit" href="/">Save</button>
+    </div>
+  </form>
+
+{% endblock %}

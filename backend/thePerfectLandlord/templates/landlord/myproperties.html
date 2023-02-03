@@ -1,0 +1,11 @@
+{% extends 'landlord/base.html' %}
+
+   
+    {% block content %}
+        <h1>My Properties:</h1>
+
+            {% for p in my_properties %}
+                <a href="./property/{{p.property_id}}">{{ p.address }}</a>
+            {% endfor %}
+
+    {% endblock %}

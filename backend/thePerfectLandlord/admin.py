@@ -1,0 +1,28 @@
+from django.contrib import admin
+
+from .models import *
+
+admin.site.register(ResidentialType)
+admin.site.register(IncomeType)
+admin.site.register(IdentityType)
+admin.site.register(PropertyType)
+admin.site.register(Frequency)
+admin.site.register(Document)
+admin.site.register(UserProfile)
+admin.site.register(ResidentialItem)
+admin.site.register(ResidentialDetail)
+admin.site.register(EmploymentItem)
+admin.site.register(EmploymentDetail)
+admin.site.register(IncomeItem)
+admin.site.register(IncomeDetail)
+admin.site.register(IdentityItem)
+admin.site.register(IdentityDetail)
+admin.site.register(Property)
+admin.site.register(SavedProperty)
+admin.site.register(PropertyFeature)
+admin.site.register(Feature)
+admin.site.register(PropertyInspection)
+admin.site.register(InspectionRegistration)
+admin.site.register(PropertyApplication)
+admin.site.register(PropertyLease)
+admin.site.register(Contract)

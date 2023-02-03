@@ -1,0 +1,30 @@
+{
+    "properties": [
+        {"id": 121, "image": "src=../../assets/sample.jpg", "address": "36/204 La Trobe Street", "description": "Luxury Apartment hosts only the best of celebrities. The apartment features modern architechture along with 5 butlers and security","features":  ["Air Conditioning","Laundry"],"price": 560, "bedrooms": 2, "bathrooms": 1, "parking": 0, "preference":{
+            "type": "Student", "gender": "Male", "sexualOrientation": "Gay"
+        }},
+        {"id": 121, "image": "src=../../assets/sample.jpg", "address": "36/204 La Trobe Street", "description": "Luxury Apartment hosts only the best of celebrities. The apartment features modern architechture along with 5 butlers and security","features": ["Air Conditioning","Laundry"],"price": 560, "bedrooms": 2, "bathrooms": 1, "parking": 0, "preference":{
+            "type": "Student", "gender": "Male", "sexualOrientation": "Gay"
+        }},        
+        {"id": 121, "image": "src=../../assets/sample.jpg", "address": "36/204 La Trobe Street", "description": "Luxury Apartment hosts only the best of celebrities. The apartment features modern architechture along with 5 butlers and security","features":  ["Air Conditioning","Laundry"],"price": 560, "bedrooms": 2, "bathrooms": 1, "parking": 0, "preference":{
+            "type": "Student", "gender": "Male", "sexualOrientation": "Gay"
+        }}
+    ],
+    "tenants":[
+        {"id": 144, "name": "Ekrar Efaz", "age": 20 ,"gender": "male", "job": "Dancer", "preference":{
+            "type": "studio", "parking": true
+        }},
+        {"id": 124, "name": "Ekrar Efaz", "age": 20 ,"gender": "male", "job": "Dancer", "preference":{
+            "type": "studio", "parking": true
+        }}
+    ],
+    "inspections":[
+        {
+            "id": 89, "address": "36/204 La Trobe Street", "date": "01/01/2023", "time": "14:00", "agent": "Zuckerberg", "checklist": ["Valid ID", "Vaccine Certificate"]
+        },
+        {
+            "id": 76, "address": "11/204 La Trobe Street", "date": "01/01/2023", "time": "10:00", "agent": "Rohulla", "checklist": ["Valid ID", "Appointment Copy"]
+        }
+    ]
+
+}
