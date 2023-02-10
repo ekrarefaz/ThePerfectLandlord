@@ -3,11 +3,11 @@
         <h2>Login</h2>
         <form>
           <div class="user-box">
-            <input type="text" name="" required="">
+            <input type="text" name="username" required="" v-model="username">
             <label>Username</label>
           </div>
           <div class="user-box">
-            <input type="password" name="" required="">
+            <input type="password" name="password" required="" v-model="password">
             <label>Password</label>
           </div>
           <a href="#">
@@ -22,7 +22,14 @@
 </template>
 
 <script>
-
+  export default{
+    data(){
+      return{
+        username: '',
+        password: ''
+      }
+    }
+  }
 </script>
 
 <style scoped > 

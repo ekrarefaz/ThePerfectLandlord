@@ -1,22 +1,22 @@
 <template>
-    <h2>Properties Available for Rent</h2>
-    <div class="property-main">
-        <div class="property-container">
-            <div v-for="property in properties" :key="property.id">
-                <router-link :to="{name: 'property-details', params: {id: property.id}}">
-                <div class="property">
-                    <div class="image">
-                        <img src="../../assets/sample.jpg" alt="">
-                    </div>
-                    <div class="details">
-                        <h3>{{property.address}}</h3>
-                        <p>{{property.bedrooms}}Bed, {{property.bathrooms}}Bath</p>
-                        <span class="price-tag">
-                            <h4> {{property.price}}/Week</h4>
-                        </span>
-                    </div>
-                </div>
-                </router-link>
+    <div v-for="property in properties" :key="property.id">
+        div.main    
+        <div class="property-card-container">
+            <div class="property-card">
+            <img src="../../assets/sample.jpg" alt="">
+            <div class="property-card__body">
+                <span class="tag">
+                <p>{{property.bedrooms}} Bed {{property.bathrooms}} Bath</p>
+                </span>
+                <h1>{{property.address}}</h1>
+                <span class="price">{{property.price}}$/week</span>
+                <p class="description">
+                    {{ property.description }}
+                </p>
+                <button class="btn">
+                    Details
+                </button>
+            </div>
             </div>
         </div>
     </div>
@@ -38,46 +38,69 @@
     }
 </script>
 
-<style scoped>
-*{
-    text-decoration: none;
-}
-.property-container{
+<style>
+* {
+    padding: 0;
+    margin: 0;
+  }
+  .property-card-container {
+    background: aliceblue;
+    width: 100%;
+    height: 210px;
     display: flex;
-    align-content: space-around;
-    padding: 10px;
-    width:max-content;
-    height: max-content;
-    text-decoration: none;
-    flex: 0 0 192px;
-}
-.property{
-    text-decoration: none;
-    border: 2px solid black;
-    padding: 10px;
-    margin: 15px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  .property-card {
+    background: white;
     display: flex;
-    align-content: space-between;
-
-}
-.property:hover{
-    background:whitesmoke;
-    border-radius: 10px;
-}
-.property a{
+    border-radius: 15px;
+    box-shadow: 1px 1px 50px rgba(0, 0, 0, 0.1);
+    max-width: 700px;
+    padding: 30px;
+  }
+  
+  .property-card img {
+    max-height: 150px;
+  }
+  .property-card .property-card__body h1 {
+    margin-bottom: 15px;
+  }
+  .property-card .property-card__body .price {
+    font-size: 18px;
     text-decoration: none;
-}
-.image,.details{
-    padding: 5px;
-    text-decoration: none;
-}
-img{
-    width: 100px;
-    height: 100px;
-}
-.price-tag{
-    float: right;
-}
-
-
+  }
+  .property-card .property-card__body .discount {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .property-card .property-card__body .description {
+    margin-top: 15px;
+    color: #303030;
+  }
+  .tag p {
+    background: black;
+    color: white;
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 50px;
+    margin-bottom: 15px;
+  }
+  .property-card__body .btn {
+    background: #168fe0;
+    border: none;
+    padding: 10px 20px;
+    outline: none;
+    border-radius: 5px;
+    color: white;
+    margin-top: 20px;
+    width: 100%;
+    box-shadow: 1px 4px 0px rgba(22, 143, 224, 0.5);
+    transition: all 200ms ease-in-out;
+    cursor: pointer;
+  }
+  .property-card__body .btn:hover {
+    box-shadow: 0px 2px 0px rgba(22, 143, 224, 0.5);
+  }
+  
 </style>
