@@ -2,15 +2,23 @@ from django.urls import include, path
 from rest_framework import routers
 from . import views
 
+# CRUD API
 router = routers.DefaultRouter()
 
 router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
-router.register(r'properties', views.PropertiesViewSet)
 
-# Wire up our API using automatic URL routing.
-# Additionally, we include login URLs for the browsable API.
 urlpatterns = [
-    path('', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    # Authentication API
+    path('auth/', include('djoser.urls')),
+    path('auth/', include('djoser.urls.authtoken')),
+
+    # App API
+    path('properties/', views.PropertiesViewSet.as_view()),
 ]
+
+# In order to login:
+# http://localhost:8000/auth/token/login
+
+# In order to register:
+# http://localhost:8000/auth/users/

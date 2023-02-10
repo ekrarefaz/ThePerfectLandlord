@@ -1,6 +1,9 @@
 from django.contrib.auth.models import User, Group
+from rest_framework.authtoken.models import Token
 from rest_framework import viewsets
 from rest_framework import permissions
+from rest_framework.views import APIView
+from rest_framework.response import Response
 from .serializers import *
 
 from thePerfectLandlord.models import Property
@@ -22,10 +25,22 @@ class GroupViewSet(viewsets.ModelViewSet):
     serializer_class = GroupSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-class PropertiesViewSet(viewsets.ModelViewSet):
+class PropertiesViewSet(APIView):
     """
     API endpoint that allows properties that belongs to the user to be viewed and edited.
     """
-    queryset = Property.objects.filter()
-    serializer_class = PropertySerializer
+
     permission_classes = [permissions.IsAuthenticated]
+
+    def get(self, request, format=None):
+        # Retrieve token
+        tokenString = request.headers['Authorization'].split()[1]
+
+        # Retrieve User
+        token = Token.objects.get(key=tokenString)
+        user = User.objects.get(username=token.user)
+
+        queryset = Property.objects.filter(landlord_id=user.id)
+        serializer = PropertySerializer(queryset, many=True)
+
+        return Response(serializer.data)
