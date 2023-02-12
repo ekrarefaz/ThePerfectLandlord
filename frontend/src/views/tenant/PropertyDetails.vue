@@ -1,5 +1,5 @@
 <template>
-<h1>Details</h1>
+<NavBar/>
 <div v-if="property">
     <div class="property-container">
         <div class="property-img">
@@ -30,7 +30,8 @@
 </template>
 
 <script>
-    import PropertyFeatures from '@/components/PropertyFeatures.vue';
+    import NavBar from '@/components/NavBar.vue';
+import PropertyFeatures from '@/components/PropertyFeatures.vue';
 
     export default{
     props: ["id"],
@@ -45,7 +46,7 @@
             .then(data => this.property = data)
             .catch(err => console.log(err.message));
     },
-    components: { PropertyFeatures }
+    components: { PropertyFeatures, NavBar }
 }
     
 </script>
@@ -58,7 +59,7 @@
     display: flex;
     border: 2px solid black;
     padding: 100px;
-    margin: 50px;
+    margin: 80px;
 }
 .property-features{
     border: 2px solid black;

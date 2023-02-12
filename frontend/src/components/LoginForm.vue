@@ -1,35 +1,57 @@
 <template>
     <div class="login-box">
         <h2>Login</h2>
-        <form>
+        <form @submit.prevent="authenticate">
           <div class="user-box">
             <input type="text" name="username" required="" v-model="username">
             <label>Username</label>
+            <p>{{username}}</p>
           </div>
           <div class="user-box">
             <input type="password" name="password" required="" v-model="password">
             <label>Password</label>
           </div>
-          <a href="#">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            Submit
-          </a>
+          <input type="submit" value="submit" class="submitBtn">
         </form>
       </div>
 </template>
 
 <script>
+import axios from 'axios';
+
   export default{
     data(){
       return{
+        isAuthenticated: false,
         username: '',
-        password: ''
+        password: '',
+        users: []
       }
+    },
+    methods:{
+      async authenticate(){
+        axios.defaults.headers.common['Authorization'] = ''
+        localStorage.removeItem('token')
+
+        const formData={
+          username : this.username,
+          password: this.password
+        }
+
+        await axios
+        .post('http://127.0.0.1:8000/auth/token/login',formData)
+        .then(response=>{
+          const token = response.data.auth_token
+          this.$store.commit('setToken', token)
+          axios.defaults.headers.common['Authorization'] = 'Token' + token
+          localStorage.setItem('token', token)
+
+          this.$router.push('/properties')
+          console.log("done")
+        })
+        }
+      },
     }
-  }
 </script>
 
 <style scoped > 
@@ -38,7 +60,7 @@ html {
   }
   body {
     margin:0;
-    padding:0;
+    padding:0;          
     font-family: sans-serif;
     background: linear-gradient(#141e30, #243b55);
   }
@@ -98,7 +120,7 @@ html {
     font-size: 12px;
   }
   
-  .login-box form a {
+  .login-box form .submitBtn {
     position: relative;
     display: inline-block;
     padding: 10px 20px;
@@ -112,13 +134,13 @@ html {
     letter-spacing: 4px
   }
   
-  .login-box a:hover {
+  .login-box .submitBtn:hover {
     background: red;
     color: #fff;
     border-radius: 5px;
   }
   
-  .login-box a span {
+  .login-box .submitBtn span {
     position: absolute;
     display: block;
   }

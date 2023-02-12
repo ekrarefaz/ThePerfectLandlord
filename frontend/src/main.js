@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
+import axios from 'axios'
 
 
 /* import the fontawesome core */
@@ -14,5 +15,7 @@ import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
 
 /* add icons to the library */
 library.add(faUserSecret)
+
+Vue.prototype.$http = axios;
 
 createApp(App).use(router).component('font-awesome-icon', FontAwesomeIcon).mount('#app')

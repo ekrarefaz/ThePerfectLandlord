@@ -19,6 +19,9 @@
                 <li>
                 <router-link :to="{name: 'signup'}">Signup</router-link>
                 </li>
+                <li>
+                  <router-link :to="{name: 'user-profile'}">Profile</router-link>
+                </li>
             </ul>
         </div>
     </body>

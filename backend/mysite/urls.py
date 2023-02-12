@@ -21,8 +21,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('theperfectlandlord/', include('thePerfectLandlord.urls')),
     path('api/', include('api.urls')),
-<<<<<<< HEAD
 ]
-=======
-]
->>>>>>> 2e45baabc64e1db6bd3b67338ed7ff57577fd62a

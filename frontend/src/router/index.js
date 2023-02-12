@@ -7,6 +7,7 @@ import TenantDetails from '../views/landlord/TenantDetails.vue'
 import LoginPageView from '../views/common/LoginPageView.vue'
 import SignupPageView from '../views/common/SignupPageView.vue'
 import TenantInspectionView from '../views/tenant/TenantInspectionView.vue'
+import ProfileView from '../views/common/ProfileView.vue'
 
 
 const routes = [
@@ -51,6 +52,11 @@ const routes = [
     path: '/properties/inspections',
     name: 'tenant-inspect',
     component: TenantInspectionView,
+  },
+  {
+    path: '/profile',
+    name: 'user-profile',
+    component: ProfileView,
   },
 ]
 const router = createRouter({

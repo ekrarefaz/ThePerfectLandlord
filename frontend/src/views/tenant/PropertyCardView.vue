@@ -1,64 +1,109 @@
 <template>
-    <div v-for="property in properties" :key="property.id">
-        div.main    
-        <div class="property-card-container">
+  <NavBar/>
+      <div class="property-card-container">
+        <div v-for="property in properties" :key="property.property_id">
+          <router-link :to="{name: 'property-details', params: { id: property.property_id}}">
             <div class="property-card">
-            <img src="../../assets/sample.jpg" alt="">
-            <div class="property-card__body">
-                <span class="tag">
-                <p>{{property.bedrooms}} Bed {{property.bathrooms}} Bath</p>
-                </span>
-                <h1>{{property.address}}</h1>
-                <span class="price">{{property.price}}$/week</span>
-                <p class="description">
-                    {{ property.description }}
-                </p>
-                <button class="btn">
-                    Details
-                </button>
+              <img src="../../assets/sample.jpg" alt="">
+              <div class="property-card__body">
+                  <span class="tag">
+                  <p>{{property.bedrooms}} Bed {{property.bathrooms}} Bath</p>
+                  </span>
+                  <h1>{{property.address}}</h1>
+                  <span class="price">{{property.weekly_price}}$/week</span>
+                  <p class="description">
+                      {{ property.desc }}
+                  </p>
+                  <button class="btn">
+                      Details
+                  </button>
+              </div>
             </div>
-            </div>
+          </router-link>
         </div>
-    </div>
+      </div>
 </template>
 
 <script>
-    export default{
-        data(){
-            return{
-                properties: []
-            }
-        },
-        mounted(){
-            fetch('http://localhost:3000/properties')
-            .then(res => res.json())
-            .then(data => this.properties = data)
-            .catch(err => console.log(err.message))
+  import NavBar from '@/components/NavBar.vue';
+  import axios from 'axios'
+
+      export default{
+      data() {
+          return {
+              properties: []
+          };
+      },
+
+      methods: {
+        async getData(){
+          try{
+            const response = await this.$http.get('http://127.0.0.1:8000/api/properties/')
+            this.properties = response.data
+
+          }
+          catch(error){
+            console.log(error)
+          }
         }
-    }
+      },
+      created(){
+        this.getData()
+      },
+      components: { NavBar }
+  }
 </script>
 
-<style>
-* {
-    padding: 0;
-    margin: 0;
-  }
+<style scoped>
+*{
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 10px;
+  text-decoration: none;
+}
   .property-card-container {
-    background: aliceblue;
-    width: 100%;
-    height: 210px;
-    display: flex;
+    display:flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
   }
   .property-card {
     background: white;
-    display: flex;
+    flex: 1;
     border-radius: 15px;
     box-shadow: 1px 1px 50px rgba(0, 0, 0, 0.1);
     max-width: 700px;
     padding: 30px;
+    width: 100vw;
+    transition: ease-in .5s;
+
   }
+
+  .property-card:hover{
+    background: linear-gradient(270deg, beige, #3995a2);
+    background-size: 400% 400%;
+
+    -webkit-animation: glow 31s ease infinite;
+    -moz-animation: glow 31s ease infinite;
+    animation: glow 31s ease infinite;
+  }
+
+  @-webkit-keyframes glow {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+  }
+  @-moz-keyframes glow {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+  }
+  @keyframes glow {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+    }
   
   .property-card img {
     max-height: 150px;
@@ -102,5 +147,4 @@
   .property-card__body .btn:hover {
     box-shadow: 0px 2px 0px rgba(22, 143, 224, 0.5);
   }
-  
 </style>

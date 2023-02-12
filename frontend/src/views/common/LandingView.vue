@@ -230,6 +230,7 @@
       margin-bottom: -15px;
     }
   }
+
   main hr {
     background: #cecece;
     width: 30%;
