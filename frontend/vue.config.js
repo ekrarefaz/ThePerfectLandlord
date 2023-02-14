@@ -2,8 +2,7 @@ const { defineConfig } = require('@vue/cli-service')
 const path = require('path');
 
 module.exports = {
-    publicPath: '/backend/static/src/vue/dist/', // Should be STATIC_URL + path/to/build
-    outputDir: path.resolve(__dirname, '../backend/static/src/vue/dist/'), // Output to a directory in STATICFILES_DIRS
+    proxy: 'http://127.0.0.1',
     filenameHashing: false, // Django will hash file names, not webpack
     runtimeCompiler: true, // See: https://vuejs.org/v2/guide/installation.html#Runtime-Compiler-vs-Runtime-only
     devServer: {

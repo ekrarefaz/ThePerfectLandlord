@@ -1,13 +1,13 @@
 <template>
     <div class="login-box">
         <h2>Login</h2>
-        <form>
+        <form @submit.prevent="authenticate">
           <div class="user-box">
-            <input type="text" name="" required="">
+            <input type="text" name="username" v-model="username" required="">
             <label>Username</label>
           </div>
           <div class="user-box">
-            <input type="password" name="" required="">
+            <input type="password" name="password" v-model="password" required="">
             <label>Password</label>
           </div>
           <a href="#">
@@ -15,14 +15,49 @@
             <span></span>
             <span></span>
             <span></span>
-            Submit
           </a>
+          <button type="submit">Submit</button>
         </form>
       </div>
 </template>
 
 <script>
+import axios from 'axios';
 
+
+  export default{
+    data(){
+      return{
+        username: "",
+        password: ""
+      }
+    },
+    methods:{
+      authenticate(){
+        axios.defaults.headers.common['Authorization'] = ''
+        localStorage.removeItem('token')
+
+        const formData = {
+          username: this.username,
+          password: this.password
+        }
+
+        axios
+          .post('http://127.0.0.1:8000/auth/login')
+          .then(response=>{
+            const token = response.data.auth_token
+
+            this.$store.commit('setToken', token)
+
+            axios.defaults.headers.common['Authorization'] = 'Token' + token
+            
+            localStorage.setItem('token', token)
+
+            this.$router.push('/')
+          })
+      }
+    }
+  }
 </script>
 
 <style scoped > 
@@ -91,7 +126,7 @@ html {
     font-size: 12px;
   }
   
-  .login-box form a {
+  .login-box form submitBtn {
     position: relative;
     display: inline-block;
     padding: 10px 20px;

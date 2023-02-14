@@ -1,44 +1,50 @@
 <template>
     <div class="login-box">
         <h2>Signup</h2>
-        <form>
+        <form @submit.prevent="createUser">
           <div class="user-box">
-            <input type="text" name="username" required="">
+            <input type="text" name="username" v-model="username" required="">
             <label>Username</label>
           </div>
           <div class="user-box">
-            <input type="text" name="fname" required="">
-            <label>First Name</label>
-          </div>
-          <div class="user-box">
-            <input type="text" name="lname" required="">
-            <label>Last Name</label>
-          </div>
-          <div class="user-box">
-            <input type="text" name="email" required="">
+            <input type="text" name="email" v-model="email" required="">
             <label>Email</label>
           </div>
           <div class="user-box">
-            <input type="password" name="password" required="">
+            <input type="password" name="password" v-model="password" required="">
             <label>Password</label>
           </div>
-          <div class="user-box">
-            <input type="password" name="repassword" required="">
-            <label>Confirm Password</label>
-          </div>
-          <a href="#">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            Submit
-          </a>
+          <button type="submit">Submit</button>
         </form>
       </div>
 </template>
 
 <script>
-
+  import axios from 'axios'
+  export default{
+    data(){
+      return{
+        username: '',
+        email: '',
+        password: ''
+      }
+    },
+    methods:{
+      createUser(){
+        const formData = {
+          username: this.username,
+          email: this.email,
+          password: this.password
+        }
+        axios
+          .post('http://127.0.0.1:8000/auth/users/', formData)
+          .then(response => {
+            console.log("Created User")
+          })
+          
+      }
+    }
+  }
 </script>
 
 <style scoped > 

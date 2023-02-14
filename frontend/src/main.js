@@ -14,4 +14,9 @@ import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
 /* add icons to the library */
 library.add(faUserSecret)
 
+
+import axios from 'axios'
+
+axios.defaults.baseURL = "http://localhost:8080"
+
 createApp(App).use(router).component('font-awesome-icon', FontAwesomeIcon).mount('#app')

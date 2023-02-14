@@ -23,17 +23,27 @@
 </template>
 
 <script>
+import axios from 'axios'
+
     export default{
         data(){
             return{
                 properties: []
             }
         },
+        methods:{
+            // Get all property
+            getData(){
+                axios
+                    .get('http://127.0.0.1/api/properties')
+                    .then(response=>{
+                        this.properties = response.data
+                    })
+            }
+        },
+        // Request all the data on creation
         mounted(){
-            fetch('http://localhost:3000/properties')
-            .then(res => res.json())
-            .then(data => this.properties = data)
-            .catch(err => console.log(err.message))
+            this.getData()
         }
     }
 </script>
