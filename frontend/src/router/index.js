@@ -7,7 +7,12 @@ import TenantDetails from '../views/landlord/TenantDetails.vue'
 import LoginPageView from '../views/common/LoginPageView.vue'
 import SignupPageView from '../views/common/SignupPageView.vue'
 import TenantInspectionView from '../views/tenant/TenantInspectionView.vue'
+<<<<<<< HEAD
 import store from "../../store"
+=======
+import ProfileView from '../views/common/ProfileView.vue'
+
+>>>>>>> 79bc66c12efa5a81f414c7f84d087ba25064fc0b
 
 const routes = [
   {
@@ -66,6 +71,11 @@ const routes = [
     meta:{
       requiredLogin:true
     }
+  },
+  {
+    path: '/profile',
+    name: 'user-profile',
+    component: ProfileView,
   },
 ]
 const router = createRouter({

@@ -9,6 +9,7 @@ router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
 
 urlpatterns = [
+    
     # Authentication API
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.authtoken')),

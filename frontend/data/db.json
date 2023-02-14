@@ -25,6 +25,11 @@
         {
             "id": 76, "address": "11/204 La Trobe Street", "date": "01/01/2023", "time": "10:00", "agent": "Rohulla", "checklist": ["Valid ID", "Appointment Copy"]
         }
+    ],
+    "users":[
+        {
+            "username": "admin", "password": "admin"
+        }
     ]
 
 }

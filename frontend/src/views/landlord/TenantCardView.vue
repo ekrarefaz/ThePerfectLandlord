@@ -1,4 +1,5 @@
 <template>
+    <NavBar/>
     <h2>Tenants Looking to Rent</h2>
     <div v-if="tenants">
         <div class="tenant-container">
@@ -23,19 +24,22 @@
 </template>
 
 <script>
+import NavBar from '@/components/NavBar.vue';
+
     export default{
-        data(){
-            return{
-                tenants: []
-            }
-        },
-        mounted(){
-            fetch('http://localhost:3000/tenants')
+    data() {
+        return {
+            tenants: []
+        };
+    },
+    mounted() {
+        fetch("http://localhost:3000/tenants")
             .then(res => res.json())
             .then(data => this.tenants = data)
-            .catch(err => console.log(err.message))
-        }
-    }
+            .catch(err => console.log(err.message));
+    },
+    components: { NavBar }
+}
 </script>
 
 <style scoped>

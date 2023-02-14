@@ -1,8 +1,10 @@
 <template>
+    <NavBar/>
     <LoginForm/>
 </template>
 
 <script>
+import NavBar from '@/components/NavBar.vue';
 import LoginForm from '../../components/LoginForm.vue'
     export default{
         data(){
@@ -11,8 +13,9 @@ import LoginForm from '../../components/LoginForm.vue'
             }
         },
         components:{
-            LoginForm
-        }
+    LoginForm,
+    NavBar
+}
              
     }
 </script>
