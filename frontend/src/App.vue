@@ -13,6 +13,23 @@
     components: { 
       NavBar,
     },
+<<<<<<< HEAD
+
+    setup() {
+    return { sidebarWidth }
+    }
+
+    // beforeCreate(){
+    //   this.$store.commit('initializeStore')
+    //   if(this.$store.state.token){
+    //     axios.defaults.header.common['Authorization'] = "Token" + this.$store.state.token
+    //   }
+    //   else{
+    //     axios.defaults.header.common['Authorization'] = ""
+    //   }
+    // }
+=======
+>>>>>>> 79bc66c12efa5a81f414c7f84d087ba25064fc0b
   }
 </script>
   

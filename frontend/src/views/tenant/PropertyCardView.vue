@@ -25,6 +25,29 @@
 </template>
 
 <script>
+<<<<<<< HEAD
+import axios from 'axios'
+
+    export default{
+        data(){
+            return{
+                properties: []
+            }
+        },
+        methods:{
+            // Get all property
+            getData(){
+                axios
+                    .get('http://127.0.0.1/api/properties')
+                    .then(response=>{
+                        this.properties = response.data
+                    })
+            }
+        },
+        // Request all the data on creation
+        mounted(){
+            this.getData()
+=======
   import NavBar from '@/components/NavBar.vue';
   import axios from 'axios'
 
@@ -45,6 +68,7 @@
           catch(error){
             console.log(error)
           }
+>>>>>>> 79bc66c12efa5a81f414c7f84d087ba25064fc0b
         }
       },
       created(){

@@ -3,15 +3,32 @@
         <h2>Login</h2>
         <form @submit.prevent="authenticate">
           <div class="user-box">
+<<<<<<< HEAD
+            <input type="text" name="username" v-model="username" required="">
+=======
             <input type="text" name="username" required="" v-model="username">
+>>>>>>> 79bc66c12efa5a81f414c7f84d087ba25064fc0b
             <label>Username</label>
             <p>{{username}}</p>
           </div>
           <div class="user-box">
+<<<<<<< HEAD
+            <input type="password" name="password" v-model="password" required="">
+            <label>Password</label>
+          </div>
+          <a href="#">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </a>
+          <button type="submit">Submit</button>
+=======
             <input type="password" name="password" required="" v-model="password">
             <label>Password</label>
           </div>
           <input type="submit" value="submit" class="submitBtn">
+>>>>>>> 79bc66c12efa5a81f414c7f84d087ba25064fc0b
         </form>
       </div>
 </template>
@@ -19,6 +36,42 @@
 <script>
 import axios from 'axios';
 
+<<<<<<< HEAD
+
+  export default{
+    data(){
+      return{
+        username: "",
+        password: ""
+      }
+    },
+    methods:{
+      authenticate(){
+        axios.defaults.headers.common['Authorization'] = ''
+        localStorage.removeItem('token')
+
+        const formData = {
+          username: this.username,
+          password: this.password
+        }
+
+        axios
+          .post('http://127.0.0.1:8000/auth/login')
+          .then(response=>{
+            const token = response.data.auth_token
+
+            this.$store.commit('setToken', token)
+
+            axios.defaults.headers.common['Authorization'] = 'Token' + token
+            
+            localStorage.setItem('token', token)
+
+            this.$router.push('/')
+          })
+      }
+    }
+  }
+=======
   export default{
     data(){
       return{
@@ -52,6 +105,7 @@ import axios from 'axios';
         }
       },
     }
+>>>>>>> 79bc66c12efa5a81f414c7f84d087ba25064fc0b
 </script>
 
 <style scoped > 
@@ -120,7 +174,11 @@ html {
     font-size: 12px;
   }
   
+<<<<<<< HEAD
+  .login-box form submitBtn {
+=======
   .login-box form .submitBtn {
+>>>>>>> 79bc66c12efa5a81f414c7f84d087ba25064fc0b
     position: relative;
     display: inline-block;
     padding: 10px 20px;

@@ -16,6 +16,13 @@ import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
 /* add icons to the library */
 library.add(faUserSecret)
 
+<<<<<<< HEAD
+
+import axios from 'axios'
+
+axios.defaults.baseURL = "http://localhost:8080"
+=======
 Vue.prototype.$http = axios;
+>>>>>>> 79bc66c12efa5a81f414c7f84d087ba25064fc0b
 
 createApp(App).use(router).component('font-awesome-icon', FontAwesomeIcon).mount('#app')
