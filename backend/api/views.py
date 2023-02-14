@@ -27,6 +27,16 @@ class GroupViewSet(viewsets.ModelViewSet):
 
 class PropertiesViewSet(APIView):
     """
+    API endpoint that allows properties to be viewed.
+    """
+    def get(self, request, format=None):
+        queryset = Property.objects.all()
+        serializer = PropertySerializer(queryset, many=True)
+
+        return Response(serializer.data)
+
+class PropertiesList(APIView):
+    """
     API endpoint that allows properties that belongs to the user to be viewed and edited.
     """
 
