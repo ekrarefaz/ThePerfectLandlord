@@ -18,11 +18,27 @@ jobs:
         uses: actions/setup-python@v3
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Install Dependencies
+      - name: Build React Website
+        run: |
+          cd frontend
+          npm install
+          npm run build
+          ls -l
+          cd ..
+      - name: Build Django Static files
         run: |
           cd backend
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          python3 manage.py collectstatic
+          cd ..
+      - name: Collect website for nginx container
+        run: |
+          mkdir -p nginx/html
+          cp frontend/blar nginx/html/.
+          cp backend/statics/* nginx/html/.
+      - name: Build containers
+        run: |
+          docker compose -f docker-compose-production.yml build
       - name: Run Tests
         run: |
+          cd backend
           python manage.py test
