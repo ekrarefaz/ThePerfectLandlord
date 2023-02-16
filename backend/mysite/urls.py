@@ -20,10 +20,5 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('theperfectlandlord/', include('thePerfectLandlord.urls')),
-    path('api/', include('api.urls')),
-<<<<<<< HEAD
-
+    path('api/', include('api.urls'))
 ]
-=======
-]
->>>>>>> 79bc66c12efa5a81f414c7f84d087ba25064fc0b

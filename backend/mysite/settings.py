@@ -25,10 +25,6 @@ SECRET_KEY = 'django-insecure-u*g(p@45tr5io1)6h8!qbc=*1d!a^5l-!+85v^kv=+8lf$fr4c
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 ALLOWED_HOSTS = ['*']
-<<<<<<< HEAD
-=======
-
->>>>>>> 79bc66c12efa5a81f414c7f84d087ba25064fc0b
 CORS_ALLOW_ALL_ORIGINS = True
 
 # Application definition
@@ -44,10 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
-<<<<<<< HEAD
     'djoser'
-=======
->>>>>>> 79bc66c12efa5a81f414c7f84d087ba25064fc0b
 ]
 
 MIDDLEWARE = [
